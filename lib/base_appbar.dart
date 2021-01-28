@@ -1,10 +1,3 @@
-/**
- *  base_appbar.dart
- *
- *  Created by iotjin on 2020/03/10.
- *  description:  导航条
- */
-
 import 'package:flutter/material.dart';
 import 'package:jh_flutter_demo/project/configs/project_config.dart';
 
@@ -92,16 +85,16 @@ gradientAppBar(
         rightItemCallBack: rightItemCallBack,
         leftItemCallBack: leftItemCallBack,
       ),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            appbarStartColor,
-            appbarEndColor,
-          ],
-        ),
-      ),
+      // decoration: BoxDecoration(
+      //   gradient: LinearGradient(
+      //     begin: Alignment.topLeft,
+      //     end: Alignment.bottomRight,
+      //     colors: [
+      //       appbarStartColor,
+      //       appbarEndColor,
+      //     ],
+      //   ),
+      // ),
     ),
 //        preferredSize: Size(MediaQuery.of(context).size.width, 45),
     preferredSize: Size.fromHeight(

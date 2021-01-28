@@ -93,7 +93,7 @@ class _TagCloudState extends State<TagCloud>
     radius = widget.width / 2;
     points = _generateInitialPoints();
     animationController = new AnimationController(
-      vsync: this,
+      // vsync: this,
       //按rpm，转/每分来计算旋转速度
       duration: Duration(seconds: 60 ~/ widget.rpm),
     );
@@ -243,9 +243,7 @@ class _TagCloudState extends State<TagCloud>
   }
 }
 
-
 class TagsPainter extends CustomPainter {
-
   List<Point> points;
   double radius = 16;
   double prevX = 0;
@@ -349,13 +347,12 @@ class TagsPainter extends CustomPainter {
               style: TextStyle(fontSize: 12.0, color: Colors.white),
               children: <TextSpan>[
                 TextSpan(
-                  text: 'AA',
-                  style: TextStyle(fontSize: 12.0, color: Colors.yellow),
+                    text: 'AA',
+                    style: TextStyle(fontSize: 12.0, color: Colors.yellow),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         print('===测试暂时有误，待研究==');
-                      }
-                ),
+                      }),
               ]),
           textDirection: TextDirection.ltr)
         ..layout(maxWidth: 200, minWidth: 80)
@@ -367,22 +364,21 @@ class TagsPainter extends CustomPainter {
       //长方形
 //      canvas.drawRect(Rect.fromCenter(center:Offset(point.x+text.width/2, point.y+15),width: text.width,height: 50), paintStyle);
 
-
       //圆角矩形
       paintStyle.strokeWidth = 1.0;
       canvas.drawRRect(
           RRect.fromRectAndRadius(
-            Rect.fromCenter(center: Offset(point.x + text.width / 2, point.y + 15), width: text.width, height: 50),
-            Radius.circular(10)
-          ),
+              Rect.fromCenter(
+                  center: Offset(point.x + text.width / 2, point.y + 15),
+                  width: text.width,
+                  height: 50),
+              Radius.circular(10)),
           paintStyle);
-
     });
   }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
-
 }
 
 double _getOpacity(double z) {

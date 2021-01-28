@@ -25,7 +25,7 @@ class _DBallPageState extends State<DBallPage> {
       appBar: backAppBar(context, '3D球'),
       body: Center(
         child:
-        Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: LayoutBuilder(builder: (context, constraints) {
@@ -82,21 +82,21 @@ class _TagCloudState extends State<TagCloud>
     radius = widget.width / 2;
     points = _generateInitialPoints();
     animationController = new AnimationController(
-      vsync: this,
+      // vsync: this,
       //按rpm，转/每分来计算旋转速度
       duration: Duration(seconds: 60 ~/ widget.rpm),
     );
     rotationAnimation =
-    Tween(begin: 0.0, end: pi * 2).animate(animationController)
-      ..addListener(() {
-        setState(() {
-          var angle = rotationAnimation.value;
-          angleDelta = angle - prevAngle;//这段时间内旋转过的角度
-          prevAngle = angle;
-          //按angleDelta旋转标签到新的位置
-          _rotatePoints(points, rotateAxis, angleDelta);
-        });
-      });
+        Tween(begin: 0.0, end: pi * 2).animate(animationController)
+          ..addListener(() {
+            setState(() {
+              var angle = rotationAnimation.value;
+              angleDelta = angle - prevAngle; //这段时间内旋转过的角度
+              prevAngle = angle;
+              //按angleDelta旋转标签到新的位置
+              _rotatePoints(points, rotateAxis, angleDelta);
+            });
+          });
     animationController.repeat();
   }
 
@@ -134,8 +134,7 @@ class _TagCloudState extends State<TagCloud>
       double z =
           sqrt(1 - x * x - y * y) * (Random().nextBool() == true ? 1 : -1);
 
-      points.add(new Point(
-          x * radius, y * radius, z * radius,
+      points.add(new Point(x * radius, y * radius, z * radius,
           color: Color.fromRGBO(
             (x.abs() * 256).ceil(),
             (y.abs() * 256).ceil(),
@@ -208,13 +207,11 @@ class _TagCloudState extends State<TagCloud>
         //滑动球体改变旋转轴
         //dx为滑动过的x轴距离，可有正负值
         //dy为滑动过的y轴距离，可有正负值
-        var dx = dragUpdateDetails.delta.dx,
-            dy = dragUpdateDetails.delta.dy;
+        var dx = dragUpdateDetails.delta.dx, dy = dragUpdateDetails.delta.dy;
         //正则化，使轴向量长度为1
         var sqrtxy = sqrt(dx * dx + dy * dy);
         //避免除0
-        if (sqrtxy > 4)
-          rotateAxis = Point(-dy / sqrtxy, dx / sqrtxy, 0);
+        if (sqrtxy > 4) rotateAxis = Point(-dy / sqrtxy, dx / sqrtxy, 0);
       },
       child: Stack(
         children: children,

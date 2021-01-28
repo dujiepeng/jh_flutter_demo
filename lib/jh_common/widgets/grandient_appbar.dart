@@ -262,7 +262,8 @@ class _GradientAppBarState extends State<GradientAppBar> {
       appBar = Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [widget.gradientStart, widget.gradientEnd]),
+              // colors: [widget.gradientStart, widget.gradientEnd],
+              ),
         ),
         child: appBar,
       );

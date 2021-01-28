@@ -53,7 +53,6 @@ Scaffold(
 
 * */
 
-
 //手指按下时命中的point
 PointAnimationSequence pointAnimationSequence;
 
@@ -122,7 +121,7 @@ class _XBallViewState extends State<XBallView>
 //        duration: Duration(milliseconds: 40000), vsync: this);
 
     controller = new AnimationController(
-      vsync: this,
+      // vsync: this,
       //按rpm，转/每分来计算旋转速度
       duration: Duration(seconds: 60 ~/ 3),
     );
@@ -238,10 +237,10 @@ class _XBallViewState extends State<XBallView>
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF4079A7),
-              Color(0xFF27507F),
-            ],
+            // colors: [
+            //   Color(0xFF4079A7),
+            //   Color(0xFF27507F),
+            // ],
           ),
         ),
         child: Stack(

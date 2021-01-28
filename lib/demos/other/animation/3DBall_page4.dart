@@ -94,7 +94,7 @@ class _TagCloudState extends State<TagCloud>
     radius = widget.width / 2;
     points = _generateInitialPoints();
     animationController = new AnimationController(
-      vsync: this,
+      // vsync: this,
       //按rpm，转/每分来计算旋转速度
       duration: Duration(seconds: 60 ~/ widget.rpm),
     );
@@ -382,23 +382,28 @@ class TagsPainter extends CustomPainter {
 //      canvas.drawRRect(rrect, paintStyle);
 
       //圆形加阴影
-      Color circleColor = Colors.red;
+      // Color circleColor = Colors.red;
       Offset offset = Offset(point.x + text.width / 2, point.y + 15);
       double tempRadius = 50.0;
       Path _circlePath = Path();
       _circlePath.reset();
-      _circlePath.addArc(Rect.fromCircle(center: offset, radius: tempRadius), 0, 2 * pi);
+      _circlePath.addArc(
+          Rect.fromCircle(center: offset, radius: tempRadius), 0, 2 * pi);
       _circlePath.close();
-      var circleShader = RadialGradient(colors: [
-        Colors.white.withAlpha(0),
-        Colors.white.withAlpha(0),
-        circleColor.withAlpha(0),
-        circleColor.withAlpha(0),
-        circleColor.withOpacity(0.1),
-        circleColor.withOpacity(0.6),
-      ]).createShader(Rect.fromCircle(center:offset,radius:tempRadius));
-      canvas.drawPath(_circlePath, paintStyle..style = PaintingStyle.fill..shader = circleShader..strokeWidth = 15);
-
+      // var circleShader = RadialGradient(colors: [
+      //   Colors.white.withAlpha(0),
+      //   Colors.white.withAlpha(0),
+      //   circleColor.withAlpha(0),
+      //   circleColor.withAlpha(0),
+      //   circleColor.withOpacity(0.1),
+      //   circleColor.withOpacity(0.6),
+      // ]).createShader(Rect.fromCircle(center: offset, radius: tempRadius));
+      canvas.drawPath(
+          _circlePath,
+          paintStyle
+            ..style = PaintingStyle.fill
+            // ..shader = circleShader
+            ..strokeWidth = 15);
 
       //圆形加阴影 通过多画几圈假装阴影效果
 //      Color circleColor = Colors.red;
@@ -426,13 +431,6 @@ class TagsPainter extends CustomPainter {
 //        RRect rrect2 = RRect.fromRectAndRadius(rect2, Radius.circular(tempRadius));
 //        canvas.drawRRect(rrect2, paint2);
 //      }
-
-
-
-
-
-
-
     });
   }
 

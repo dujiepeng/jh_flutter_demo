@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 
-
 class ImgPullDownBigPage extends StatefulWidget {
   @override
   _ImgPullDownBigPageState createState() => _ImgPullDownBigPageState();
@@ -28,8 +27,10 @@ class _ImgPullDownBigPageState extends State<ImgPullDownBigPage>
     super.initState();
 
     prev_dy = 0;
-    animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    animationController = AnimationController(
+      // vsync: this,
+      duration: Duration(milliseconds: 300),
+    );
     anim = Tween(begin: 0.0, end: 0.0).animate(animationController);
   }
 
@@ -91,7 +92,7 @@ class _ImgPullDownBigPageState extends State<ImgPullDownBigPage>
               flexibleSpace: new FlexibleSpaceBar(
                   title: Text(
                     '图片下拉放大',
-                    style: TextStyle(color: Colors.white,fontSize: 18),
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   background: Image.network(
                     'http://img1.mukewang.com/5c18cf540001ac8206000338.jpg',

@@ -65,7 +65,7 @@ class _TagCloudWidgetState extends State<TagCloudWidget>
     radius = widget.width / 2;
     points = _generateInitialPoints();
     animationController = new AnimationController(
-      vsync: this,
+      // vsync: this,
       //按rpm，转/每分来计算旋转速度
       duration: Duration(seconds: 60 ~/ widget.rpm),
     );
